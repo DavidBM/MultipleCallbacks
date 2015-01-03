@@ -6,14 +6,18 @@ execute a callback after the execution of other callbacks.
 Usage
 =====
 
-Instance `MultipleCallbacks` with the quantity of callbacks that will be executed before and the callback.
+Install with `npm install multiple-callbacks`
 
-`new MultipleCallbacks(times, callback);` return a function.
+execute `multipleCallbacks` with the quantity of callbacks that will be executed before and the callback.
+
+`multipleCallbacks(times, callback);` return a function.
 Every time that this function is executed count one callback as executed.
 
 ``` javascript
 
-var cb = new MultipleCallbacks(2, makeHamburgers);
+var multipleCallbacks = require('multiple-callbacks');
+
+var cb = multipleCallbacks(2, makeHamburgers);
 
 function getMeat () {
     /*Async operation*/
@@ -36,7 +40,9 @@ You can change the execution times needed to execute the callback at any time wi
 
 ``` javascript
 
-var cb = new MultipleCallbacks(times, callback);
+var multipleCallbacks = require('multiple-callbacks');
+
+var cb = multipleCallbacks(times, callback);
 
 cb.setTimesToFire(newTimes);
 

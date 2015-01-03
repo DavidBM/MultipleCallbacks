@@ -1,5 +1,7 @@
 function MultipleCallbacks (timesToFire, callback) {
 
+	if (!(this instanceof MultipleCallbacks)) return new MultipleCallbacks(timesToFire, callback);
+
 	this.firedTimes = 0;
 	this.timesToFire = timesToFire;
 	this.callback = callback;
