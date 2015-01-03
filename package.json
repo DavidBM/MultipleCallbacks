@@ -1,0 +1,25 @@
+{
+  "name": "MultipleCallbacks",
+  "version": "1.0.0",
+  "description": "execute a callback after the execution of other callbacks",
+  "main": "MultipleCallbacks.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidBM/MultipleCallbacks.git"
+  },
+  "keywords": [
+    "callback",
+    "callbacks",
+    "multiple",
+    "sync"
+  ],
+  "author": "David Bonet Montes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DavidBM/MultipleCallbacks/issues"
+  },
+  "homepage": "https://github.com/DavidBM/MultipleCallbacks"
+}
