@@ -42,9 +42,9 @@ MultipleCallbacks.prototype.sumTimesToFire = function(quantity) {
 
 MultipleCallbacks.prototype._preCallback = function() {
 
-	if(this.timesToFire === false) return;
-
 	this.firedTimes++;
+
+	if(this.timesToFire === false) return false;
 
 	if(this.firedTimes >= this.timesToFire && this.callback){
 		this.callback();
