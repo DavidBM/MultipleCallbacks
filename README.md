@@ -55,3 +55,30 @@ Other methods are:
 `getFiredTimes`: Return the times that the callback returned by `MultipleCallbacks` has been fired.
 
 `sumTimesToFire`: Sum a quantity to the needed quantity of callbacks executions to execute your callback.
+
+Indeterminated quantity of callbacks executions
+===============================================
+
+If you don't know the quantity of times that the callback will be executed, you can pass false to 'multiple-callbacks' to cancel the execution on the final callback until you provide the quantity of calls to execute the final callback.
+
+A weird example:
+
+``` javascrip
+
+	var multipleCallbacks = require('multiple-callbacks');
+
+	var exTime = 0;
+
+	var callback = multipleCallbacks(false, function () {
+		done();
+	});
+
+	services.forEach(function (service) {
+		if(service.updated === false){
+			service.doSyncOrAsyncStuff(callback)
+			exTime++;
+		}
+	});
+
+	cb.setTimesToFire(exTime);
+```
