@@ -1,6 +1,6 @@
 {
   "name": "multiple-callbacks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "execute a callback after the execution of other callbacks",
   "main": "multipleCallbacks.js",
   "scripts": {
