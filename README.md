@@ -1,6 +1,8 @@
 MultipleCallbacks
 =================
 
+[![Build Status](https://travis-ci.org/DavidBM/MultipleCallbacks.svg)](https://travis-ci.org/DavidBM/MultipleCallbacks)
+
 execute a callback after the execution of other callbacks.
 
 Usage
