@@ -1,4 +1,4 @@
-var multipleCallbacks = require('./../multipleCallbacks.js');
+var multipleCallbacks = require(__dirname + '/../multipleCallbacks.js');
 
 describe("Multiple Callbacks", function() {
 
