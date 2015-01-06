@@ -65,7 +65,7 @@ If you don't know the quantity of times that the callback will be executed, you 
 
 A weird example:
 
-``` javascrip
+``` javascript
 
 	var multipleCallbacks = require('multiple-callbacks');
 
