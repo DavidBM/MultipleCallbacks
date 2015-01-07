@@ -21,6 +21,9 @@ var multipleCallbacks = require('multiple-callbacks');
 
 var cb = multipleCallbacks(2, makeHamburgers);
 
+getMeat();
+getBread();
+
 function getMeat () {
     /*Async operation*/
     setTimeout(cb, 1000);
