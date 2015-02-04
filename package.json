@@ -1,6 +1,6 @@
 {
   "name": "multiple-callbacks",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "execute a callback after the execution of other callbacks",
   "main": "multipleCallbacks.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "homepage": "https://github.com/DavidBM/MultipleCallbacks",
   "devDependencies": {
     "minijasminenode2": "^1.0.0"
+  },
+  "dependencies": {
+    "debug": "^2.1.1"
   }
 }
