@@ -12,7 +12,7 @@ Install with `npm install multiple-callbacks`
 
 execute `multipleCallbacks` with the quantity of callbacks that will be executed before and the callback.
 
-`multipleCallbacks(times, callback);` return a function.
+`multipleCallbacks(times, callback, name);` return a function.
 Every time that this function is executed count one callback as executed.
 
 ``` javascript
@@ -60,6 +60,8 @@ Other methods are:
 `getFiredTimes`: Return the times that the callback returned by `MultipleCallbacks` has been fired.
 
 `sumTimesToFire`: Sum a quantity to the needed quantity of callbacks executions to execute your callback.
+
+For debbug porposes you can pass a name to the constructor. `multipleCallbacks(times, callback, name);` It uses de [debug](https://www.npmjs.com/package/debug) module for show the name on every callback execution.
 
 Indeterminated quantity of callbacks executions
 ===============================================
