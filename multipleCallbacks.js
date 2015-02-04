@@ -1,6 +1,10 @@
-function MultipleCallbacks (timesToFire, callback) {
+var debug = require('debug')('log');
+
+function MultipleCallbacks (timesToFire, callback, name) {
 
 	if (!(this instanceof MultipleCallbacks)) return new MultipleCallbacks(timesToFire, callback);
+
+	if(typeof name !== 'undefined') this.name = name;
 
 	this.firedTimes = 0;
 	this.timesToFire = timesToFire;
@@ -49,6 +53,9 @@ MultipleCallbacks.prototype._preCallback = function() {
 	if(this.firedTimes >= this.timesToFire && this.callback){
 		this.callback();
 	}
+
+	debug('Fired ' + this.name + ' ' + this.firedTimes + ' times. Times to fire: ' + this.timesToFire);
+
 	return this.timesToFire - this.firedTimes;
 };
 
