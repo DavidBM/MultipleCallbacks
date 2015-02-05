@@ -29,7 +29,7 @@ MultipleCallbacks.prototype.setTimesToFire = function(timesToFire) {
 
 	this.timesToFire = timesToFire;
 
-	if(this.firedTimes >= this.timesToFire) this._preCallback();
+	if(this.firedTimes >= this.timesToFire) this._launchCallback();
 
 	return timesToFire;
 };
@@ -52,6 +52,10 @@ MultipleCallbacks.prototype._preCallback = function() {
 
 	this.firedTimes++;
 
+	return this._launchCallback();
+};
+
+MultipleCallbacks.prototype._launchCallback = function() {
 	if(this.timesToFire === false) return false;
 
 	if(this.firedTimes >= this.timesToFire && this.callback){
