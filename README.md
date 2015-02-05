@@ -63,6 +63,8 @@ Other methods are:
 
 For debbug porposes you can pass a name to the constructor. `multipleCallbacks(times, callback, name);` It uses de [debug](https://www.npmjs.com/package/debug) module for show the name on every callback execution.
 
+The name of debug function (for view the log) are `MultipleCallbacks:log` and `MultipleCallbacks:warning`. See the [debug](https://www.npmjs.com/package/debug#conventions) documentation for more info.
+
 Indeterminated quantity of callbacks executions
 ===============================================
 

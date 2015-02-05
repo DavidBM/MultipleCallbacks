@@ -1,10 +1,14 @@
-var debug = require('debug')('log');
+var debugLog = require('debug')('MultipleCallbacks:log');
+var debugWarning = require('debug')('MultipleCallbacks:warning');
 
 function MultipleCallbacks (timesToFire, callback, name) {
 
 	if (!(this instanceof MultipleCallbacks)) return new MultipleCallbacks(timesToFire, callback);
 
-	if(typeof name !== 'undefined') this.name = name;
+	if(typeof name !== 'undefined')
+		this.name = name;
+	else
+		this.name = "unidentified";
 
 	this.firedTimes = 0;
 	this.timesToFire = timesToFire;
@@ -54,9 +58,13 @@ MultipleCallbacks.prototype._preCallback = function() {
 		this.callback();
 	}
 
-	debug('Fired ' + this.name + ' ' + this.firedTimes + ' times. Times to fire: ' + this.timesToFire);
+	debugLog('Fired ' + this.name + ' ' + this.firedTimes + ' times. Times to fire: ' + this.timesToFire);
 
-	return this.timesToFire - this.firedTimes;
+	var remainingTimesTofire = this.timesToFire - this.firedTimes;
+
+	if (remainingTimesTofire < 0) debugWarning('Callback ' + this.name + ' fired more times than expected. Relauching user callback.');
+
+	return remainingTimesTofire;
 };
 
 MultipleCallbacks.prototype.createPreCallback = function() {
