@@ -27,17 +27,17 @@ Every time that this function is executed count one callback as executed.
 	getBread();
 
 	function getMeat () {
-	    /*Async operation*/
-	    setTimeout(cb, 1000);
+		/*Async operation*/
+		setTimeout(cb, 1000);
 	}
 
 	function getBread () {
-	    /*Async operation*/
-	    setTimeout(cb, 1000);
+		/*Async operation*/
+		setTimeout(cb, 1000);
 	}
 
 	function makeHamburgers () {
-	    console.log('I’m lovin’ it!');
+		console.log('I’m lovin’ it!');
 	}
 
 ```
@@ -109,17 +109,17 @@ Let's view the first example with data:
 	getBread();
 
 	function getMeat () {
-	    /*Async operation*/
-	    setTimeout(function () {
+		/*Async operation*/
+		setTimeout(function () {
 			cb(new Meat());
-	    }, 1000);
+		}, 1000);
 	}
 
 	function getBread () {
-	    /*Async operation*/
-	    setTimeout(function () {
+		/*Async operation*/
+		setTimeout(function () {
 			cb(new Bread());
-	    }, 1000);
+		}, 1000);
 	}
 
 	function makeHamburgers (ingredients) {
@@ -130,7 +130,9 @@ Let's view the first example with data:
 			hamburger.addIngredient(ingredient);
 		}
 
-	    console.log('I’m lovin’ it!');
+		console.log('I’m lovin’ it!');
 	}
 
 ```
+
+**If only one callback has returned data, multipleCallbacks don't pass an Array to the user callback. Instead pass the data itself.**

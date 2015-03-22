@@ -58,7 +58,8 @@ MultipleCallbacks.prototype._launchCallback = function() {
 	if(this.timesToFire === false) return false;
 
 	if(this.firedTimes >= this.timesToFire && this.callback){
-		if(this.savedData.length > 0) this.callback(this.savedData);
+		if(this.savedData.length > 1) this.callback(this.savedData);
+		else if(this.savedData.length === 1) this.callback(this.savedData[0]);
 		else this.callback();
 	}
 
