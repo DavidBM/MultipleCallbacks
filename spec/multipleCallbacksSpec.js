@@ -96,6 +96,23 @@ describe("Multiple Callbacks", function() {
 
 	});
 
+	it("getFiredTimes should return the correct quantity", function(done) {
+
+		cb = multipleCallbacks(5, function (data) {
+			expect(data[0]).toEqual({a:5});
+			expect(data[1]).toEqual([2, 5, 3, "s"]);
+			expect(data[2]).toBe(1);
+			expect(data[3]).toBe("1");
+			done();
+		});
+
+		cb({a:5});
+		cb([2, 5, 3, "s"]);
+		cb(1);
+		cb();
+		cb("1");
+	});
+
 	it("sumTimesToFire should sum a cuantity to times to fire", function() {
 
 		var executed = false;

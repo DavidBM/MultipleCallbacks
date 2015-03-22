@@ -13,6 +13,7 @@ function MultipleCallbacks (timesToFire, callback, name) {
 	this.firedTimes = 0;
 	this.timesToFire = timesToFire;
 	this.callback = callback;
+	this.savedData = [];
 
 	var preCallback = this.createPreCallback();
 
@@ -26,7 +27,6 @@ function MultipleCallbacks (timesToFire, callback, name) {
 module.exports = exports = MultipleCallbacks;
 
 MultipleCallbacks.prototype.setTimesToFire = function(timesToFire) {
-
 	this.timesToFire = timesToFire;
 
 	if(this.firedTimes >= this.timesToFire) this._launchCallback();
@@ -49,7 +49,6 @@ MultipleCallbacks.prototype.sumTimesToFire = function(quantity) {
 };
 
 MultipleCallbacks.prototype._preCallback = function() {
-
 	this.firedTimes++;
 
 	return this._launchCallback();
@@ -59,7 +58,8 @@ MultipleCallbacks.prototype._launchCallback = function() {
 	if(this.timesToFire === false) return false;
 
 	if(this.firedTimes >= this.timesToFire && this.callback){
-		this.callback();
+		if(this.savedData.length > 0) this.callback(this.savedData);
+		else this.callback();
 	}
 
 	debugLog('Fired ' + this.name + ' ' + this.firedTimes + ' times. Times to fire: ' + this.timesToFire);
@@ -72,10 +72,10 @@ MultipleCallbacks.prototype._launchCallback = function() {
 };
 
 MultipleCallbacks.prototype.createPreCallback = function() {
-
 	var _this = this;
 
-	function preCallback (){
+	function preCallback (data){
+		if(typeof data !== 'undefined') _this.savedData.push(data);
 		return _this._preCallback();
 	}
 

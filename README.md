@@ -3,7 +3,9 @@ MultipleCallbacks
 
 [![Build Status](https://travis-ci.org/DavidBM/MultipleCallbacks.svg)](https://travis-ci.org/DavidBM/MultipleCallbacks)
 
-execute a callback after the execution of other callbacks.
+**Execute a callback after the execution of other callbacks.**
+
+_Note: If you're reading this, probably you want to use [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) instead of this library_
 
 Usage
 =====
@@ -17,26 +19,26 @@ Every time that this function is executed count one callback as executed.
 
 ``` javascript
 
-var multipleCallbacks = require('multiple-callbacks');
+	var multipleCallbacks = require('multiple-callbacks');
 
-var cb = multipleCallbacks(2, makeHamburgers);
+	var cb = multipleCallbacks(2, makeHamburgers);
 
-getMeat();
-getBread();
+	getMeat();
+	getBread();
 
-function getMeat () {
-    /*Async operation*/
-    setTimeout(cb, 1000);
-}
+	function getMeat () {
+	    /*Async operation*/
+	    setTimeout(cb, 1000);
+	}
 
-function getBread () {
-    /*Async operation*/
-    setTimeout(cb, 1000);
-}
+	function getBread () {
+	    /*Async operation*/
+	    setTimeout(cb, 1000);
+	}
 
-function makeHamburgers () {
-    console.log('I’m lovin’ it!')
-}
+	function makeHamburgers () {
+	    console.log('I’m lovin’ it!');
+	}
 
 ```
 
@@ -45,11 +47,11 @@ You can change the execution times needed to execute the callback at any time wi
 
 ``` javascript
 
-var multipleCallbacks = require('multiple-callbacks');
+	var multipleCallbacks = require('multiple-callbacks');
 
-var cb = multipleCallbacks(times, callback);
+	var cb = multipleCallbacks(times, callback);
 
-cb.setTimesToFire(newTimes);
+	cb.setTimesToFire(newTimes);
 
 ```
 
@@ -90,4 +92,45 @@ A weird example:
 	});
 
 	cb.setTimesToFire(exTime);
+```
+
+Your async functions return data
+================================
+
+Let's view the first example with data:
+
+``` javascript
+
+	var multipleCallbacks = require('multiple-callbacks');
+
+	var cb = multipleCallbacks(2, makeHamburgers);
+
+	getMeat();
+	getBread();
+
+	function getMeat () {
+	    /*Async operation*/
+	    setTimeout(function () {
+			cb(new Meat());
+	    }, 1000);
+	}
+
+	function getBread () {
+	    /*Async operation*/
+	    setTimeout(function () {
+			cb(new Bread());
+	    }, 1000);
+	}
+
+	function makeHamburgers (ingredients) {
+		var hamburger = new Hamburger();
+
+		for (var i = ingredients.length - 1; i >= 0; i--) {
+			var ingredient = ingredients[i];
+			hamburger.addIngredient(ingredient);
+		}
+
+	    console.log('I’m lovin’ it!');
+	}
+
 ```
