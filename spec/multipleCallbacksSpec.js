@@ -96,7 +96,7 @@ describe("Multiple Callbacks", function() {
 
 	});
 
-	it("getFiredTimes should return the correct quantity", function(done) {
+	it("if data are pased to callbacks, the user callback have an Array with the datas", function(done) {
 
 		cb = multipleCallbacks(5, function (data) {
 			expect(data[0]).toEqual({a:5});
@@ -111,6 +111,18 @@ describe("Multiple Callbacks", function() {
 		cb(1);
 		cb();
 		cb("1");
+	});
+
+	it("If only one data are pasaed in callbacks, the user callback have the data without an Array", function(done) {
+
+		cb = multipleCallbacks(3, function (data) {
+			expect(data).toEqual({a:5});
+			done();
+		});
+
+		cb();
+		cb({a:5});
+		cb();
 	});
 
 	it("sumTimesToFire should sum a cuantity to times to fire", function() {
